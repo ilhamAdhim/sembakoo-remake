@@ -6,42 +6,86 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
-import { LastUpdateContext } from "../context/LastUpdateContext";
-import { LastUpdateContextType } from "../types/lastUpdate";
+import { DataContext, DataContextType } from "context/DataContext";
+import useSmallViewport from "hooks/useViewport";
+import React, { useContext } from "react";
 import JumbotronSVG from "./JumbotronSVG";
 
+interface JumbotronTextProps {
+  isCaption: boolean | undefined;
+  children: React.ReactNode;
+}
+
+const JumbotronText: React.FC<JumbotronTextProps> = ({
+  isCaption,
+  children,
+}) => {
+  const textColor = useColorModeValue("red", "red.400");
+  const { isSmallViewport } = useSmallViewport();
+
+  return (
+    <Text
+      mb="1em"
+      textAlign={isSmallViewport ? "center" : "justify"}
+      fontSize={
+        isSmallViewport
+          ? isCaption
+            ? "1xl"
+            : "2xl"
+          : isCaption
+          ? "2xl"
+          : "3xl"
+      }
+      color={textColor}
+      fontWeight="bold"
+    >
+      {children}
+    </Text>
+  );
+};
+
 function Jumbotron() {
-  const { lastUpdate } = useContext(LastUpdateContext) as LastUpdateContextType;
+  const { isSmallViewport } = useSmallViewport();
+
+  const { lastUpdate } = useContext(DataContext) as DataContextType;
 
   const { colorMode } = useColorMode();
 
-  const textColor = useColorModeValue("red", "red.400");
-
   return (
-    <Flex width="100%" justifyContent="space-between">
-      <Box flex={2} mt="10em" ml="10em">
-        <div className="text_jumbotron_section" data-aos="fade-right">
-          <Text fontSize="5xl" color={textColor} fontWeight="bold" mb="1em">
-            Sembakoo.id
-          </Text>
-          <Text fontSize="2xl" color={textColor} fontWeight="bold" mb="1em">
+    <Flex
+      width="100%"
+      justifyContent="space-between"
+      flexDir={["column-reverse", "row"]}
+    >
+      <Box flex={2} mt={["1em", "10em"]} ml={[0, "10em"]}>
+        <div data-aos="fade-right">
+          <JumbotronText isCaption={false}>Sembakoo.id</JumbotronText>
+          <JumbotronText isCaption>
             📉 Get latest price for sembako
-          </Text>
-          <Text fontSize="2xl" color={textColor} fontWeight="bold" mb="1em">
-            <>⌚ Last updated on {lastUpdate}</>
-          </Text>
+          </JumbotronText>
+          <JumbotronText isCaption>
+            ⌚ Last updated on {lastUpdate}
+          </JumbotronText>
 
           <br />
-          <a href="#search_section">
-            <Button className="button_jumbotron" role="button">
-              Check My Region
-            </Button>
-          </a>
+          <Flex justify={isSmallViewport ? "center" : "start"}>
+            <a href="#search_section">
+              <Button
+                role="button"
+                textAlign={isSmallViewport ? "center" : "justify"}
+              >
+                Check My Region
+              </Button>
+            </a>
+          </Flex>
         </div>
       </Box>
       <Box>
-        <JumbotronSVG width={600} height={600} color={colorMode} />
+        <JumbotronSVG
+          height={isSmallViewport ? 400 : 600}
+          width={isSmallViewport ? 380 : 600}
+          color={colorMode}
+        />
       </Box>
     </Flex>
   );
