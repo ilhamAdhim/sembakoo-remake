@@ -1,5 +1,4 @@
 import { useColorMode } from "@chakra-ui/react";
-import { ReactComponent as SearchProvinceSVG } from "assets/search_province.svg";
 import { ucfirst } from "utils";
 import CityEffectSVG from "./CityEffectSVG";
 
@@ -27,7 +26,7 @@ const ProvinceImage: React.FC<ProvinceImageProps> = ({
         }}
       >
         <CityEffectSVG
-          width={isSmallViewport ? "300px" : "100%"}
+          width={isSmallViewport ? "400px" : "100%"}
           height={isSmallViewport ? "200px" : "100%"}
           color={colorMode}
         />

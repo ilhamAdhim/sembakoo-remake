@@ -73,7 +73,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Container maxW="7xl" mt="2em">
+      <Container maxW="7xl" mt="2em" overflow="hidden">
         <Jumbotron />
         <CommodityList
           title="Highest Price Commodities 📈"

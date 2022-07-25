@@ -46,7 +46,7 @@ const Navbar = () => {
                   <Link
                     target="_blank"
                     rel="noreferrer noopener"
-                    href="https://github.com/ilhamAdhim/sembakoo-remake/tree/master/src"
+                    href="https://github.com/ilhamAdhim/sembakoo-remake"
                     display="flex"
                     p="2"
                     justifyContent="space-between"

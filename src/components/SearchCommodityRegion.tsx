@@ -1,6 +1,5 @@
 import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
 import {
-  Box,
   Button,
   Flex,
   Input,
@@ -100,6 +99,16 @@ const SearchCommodityRegion: React.FC<SearchCommodityRegionProps> = ({
         <InputGroup w="300px">
           <Input
             pr="4.5rem"
+            borderBottomColor="red.800"
+            borderTop="none"
+            borderLeft="none"
+            borderRight="none"
+            _focus={{
+              borderBottomColor: "red.800",
+              borderTop: "none",
+              borderLeft: "none",
+              borderRight: "none",
+            }}
             onChange={handleInputChange}
             placeholder="Search Province ..."
             value={inputValue}
