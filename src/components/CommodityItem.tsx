@@ -6,12 +6,14 @@ import { IBasicCommodity } from "types/commodity";
 import LazyImage from "./LazyImage";
 
 const CommodityItem = (props: IBasicCommodity) => {
-  const { id, commodity, price, region } = props;
+  const { commodity, price, region } = props;
   const { isSmallViewport } = useSmallViewport();
 
   return (
     <Box
       rounded="xl"
+      data-aos="fade-left"
+      data-aos-delay={100}
       boxShadow={useColorModeValue("1px 1px 5px gray", "1px 1px 5px skyblue")}
       _hover={{
         transform: "scale(1.05)",
@@ -30,7 +32,7 @@ const CommodityItem = (props: IBasicCommodity) => {
           <LazyImage
             width={isSmallViewport ? "100%" : "200px"}
             height={isSmallViewport ? "100%" : "200px"}
-            src={`https://github.com/ilhamAdhim/sembakoo-remake/blob/master/src/assets/${commodity
+            src={`${process.env.PUBLIC_URL}/assets/komoditas/${commodity
               ?.toLowerCase()
               .replace(" ", "-")}.png?raw=true`}
           />

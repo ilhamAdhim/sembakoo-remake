@@ -44,7 +44,7 @@ const JumbotronText: React.FC<JumbotronTextProps> = ({
   );
 };
 
-function Jumbotron() {
+const Jumbotron = () => {
   const { isSmallViewport } = useSmallViewport();
 
   const { lastUpdate } = useContext(DataContext) as DataContextType;
@@ -69,18 +69,21 @@ function Jumbotron() {
 
           <br />
           <Flex justify={isSmallViewport ? "center" : "start"}>
-            <a href="#search_section">
-              <Button
-                role="button"
-                textAlign={isSmallViewport ? "center" : "justify"}
-              >
-                Check My Region
-              </Button>
-            </a>
+            <Button
+              onClick={() => {
+                document
+                  .getElementById("search_section")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              role="button"
+              textAlign={isSmallViewport ? "center" : "justify"}
+            >
+              Check My Region
+            </Button>
           </Flex>
         </div>
       </Box>
-      <Box>
+      <Box data-aos="zoom-out-left">
         <JumbotronSVG
           height={isSmallViewport ? 400 : 600}
           width={isSmallViewport ? 380 : 600}
@@ -89,6 +92,6 @@ function Jumbotron() {
       </Box>
     </Flex>
   );
-}
+};
 
 export default Jumbotron;

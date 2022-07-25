@@ -14,6 +14,9 @@ import CommodityList from "components/CommodityList";
 import SearchCommodityRegion from "components/SearchCommodityRegion";
 import Footer from "components/Layout/Footer";
 
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 const { ToastContainer } = createStandaloneToast();
 
 const App = () => {
@@ -34,6 +37,7 @@ const App = () => {
     } finally {
       setIsDataLoaded(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -63,6 +67,7 @@ const App = () => {
 
   useEffect(() => {
     document.title = "Monitor Harga Sembako";
+    Aos.init();
   }, []);
 
   return (

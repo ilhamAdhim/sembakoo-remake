@@ -1,5 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { useEffect } from "react";
+import { ucfirst } from "utils";
 
 const useToastWhenSearching = (
   isSearchedCityAvailable: boolean | undefined,
@@ -11,7 +12,7 @@ const useToastWhenSearching = (
     if (isSearchedCityAvailable !== undefined)
       if (isSearchedCityAvailable) {
         toast({
-          title: `Menampilkan hasil pencarian : ${inputValue} `,
+          title: `Menampilkan hasil pencarian : ${ucfirst(inputValue)} `,
           status: "success",
           duration: 5000,
           isClosable: true,
@@ -31,6 +32,7 @@ const useToastWhenSearching = (
           isClosable: true,
           position: "top-right",
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSearchedCityAvailable]);
 };
 

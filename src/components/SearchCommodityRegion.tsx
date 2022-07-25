@@ -9,7 +9,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 
 import { find, sortBy } from "lodash";
 
@@ -17,9 +17,10 @@ import useSmallViewport from "hooks/useViewport";
 import InitialSearch from "./SearchResult/SearchResultInitial";
 import SearchResultNotFound from "./SearchResult/SearchResultNotFound";
 import useToastWhenSearching from "hooks/useToastWhenSearching";
-import { DataContext, DataContextType } from "context/DataContext";
 import { IBasicCommodity, ICommodityListAPI } from "types/commodity";
 import CommodityList from "./CommodityList";
+import { ucfirst } from "utils";
+import ProvinceImage from "./SearchResult/ProvinceImage";
 
 interface SearchCommodityRegionProps {
   rawData: ICommodityListAPI | undefined;
@@ -90,6 +91,7 @@ const SearchCommodityRegion: React.FC<SearchCommodityRegionProps> = ({
         textAlign="center"
         color={colorTitle}
         fontSize={["1xl", "2xl"]}
+        id="search_section"
       >
         Commodities in My Area
       </Text>
@@ -125,11 +127,22 @@ const SearchCommodityRegion: React.FC<SearchCommodityRegionProps> = ({
       {isSearching ? (
         <>
           {isSearchedCityAvailable ? (
-            <CommodityList
-              commodities={provinceSearchResult}
-              isDataLoaded
-              title="Hasil pencarian"
-            />
+            <>
+              <Text
+                textAlign="center"
+                color={colorTitle}
+                fontSize={["1xl", "2xl"]}
+                fontWeight="bold"
+              >
+                Provinsi {ucfirst(inputValue)}
+              </Text>
+
+              <ProvinceImage
+                province={inputValue}
+                isSmallViewport={isSmallViewport}
+              />
+              <CommodityList commodities={provinceSearchResult} isDataLoaded />
+            </>
           ) : (
             <SearchResultNotFound
               province={inputValue}

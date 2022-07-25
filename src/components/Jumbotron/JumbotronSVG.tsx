@@ -1,7 +1,12 @@
 import React from "react";
 
-function JumbotronSVG({ width, height, color }: React.SVGProps<SVGSVGElement>) {
+const JumbotronSVG = ({
+  width,
+  height,
+  color,
+}: React.SVGProps<SVGSVGElement>) => {
   return (
+    // Ini sebenarnya jumbotron_icon.svg
     <>
       <svg
         width={width}
@@ -372,6 +377,6 @@ function JumbotronSVG({ width, height, color }: React.SVGProps<SVGSVGElement>) {
       </svg>
     </>
   );
-}
+};
 
 export default JumbotronSVG;

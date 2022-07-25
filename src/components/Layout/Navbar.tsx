@@ -6,19 +6,15 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
   useColorModeValue,
   Stack,
   useColorMode,
-  Center,
+  Link,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { MoonIcon, SunIcon, ViewIcon } from "@chakra-ui/icons";
 
-export default function Navbar() {
+const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -41,26 +37,23 @@ export default function Navbar() {
                 >
                   <Avatar
                     size={"sm"}
-                    src={"https://avatars.dicebear.com/api/male/username.svg"}
+                    src={
+                      "https://raw.githubusercontent.com/ilhamAdhim/personal-website/main/public/images/my-profile.jpg"
+                    }
                   />
                 </MenuButton>
                 <MenuList alignItems={"center"}>
-                  <br />
-                  <Center>
-                    <Avatar
-                      size={"2xl"}
-                      src={"https://avatars.dicebear.com/api/male/username.svg"}
-                    />
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <Link
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    href="https://github.com/ilhamAdhim/sembakoo-remake/tree/master/src"
+                    display="flex"
+                    p="2"
+                    justifyContent="space-between"
+                  >
+                    Check Source Code
+                    <ViewIcon />
+                  </Link>
                 </MenuList>
               </Menu>
             </Stack>
@@ -69,4 +62,6 @@ export default function Navbar() {
       </Box>
     </>
   );
-}
+};
+
+export default Navbar;

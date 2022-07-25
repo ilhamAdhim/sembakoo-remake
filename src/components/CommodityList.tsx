@@ -12,7 +12,7 @@ import CommodityItem from "./CommodityItem";
 interface CommodityListProps {
   commodities: IBasicCommodity[] | undefined;
   isDataLoaded: boolean;
-  title: string;
+  title?: string;
 }
 
 const CommodityList: React.FC<CommodityListProps> = ({
