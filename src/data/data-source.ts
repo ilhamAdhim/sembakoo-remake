@@ -20,6 +20,7 @@ const fetchDataCommodity = async () => {
       status: "error",
       duration: 5000,
       isClosable: true,
+      position: "top-right",
     });
   }
 };

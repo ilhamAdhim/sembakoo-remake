@@ -55,9 +55,9 @@ function Jumbotron() {
     <Flex
       width="100%"
       justifyContent="space-between"
-      flexDir={["column-reverse", "row"]}
+      flexDir={["column-reverse", "column-reverse", "row"]}
     >
-      <Box flex={2} mt={["1em", "10em"]} ml={[0, "10em"]}>
+      <Box flex={2} mt={["1em", "1em", "10em"]} ml={[0, 0, "10em"]}>
         <div data-aos="fade-right">
           <JumbotronText isCaption={false}>Sembakoo.id</JumbotronText>
           <JumbotronText isCaption>

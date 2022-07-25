@@ -4,8 +4,8 @@ import { IBasicCommodity } from "types/commodity";
 export type LastUpdateType = "Now" | string | undefined;
 
 export interface DataContextType {
-  dataCommodity: IBasicCommodity[];
   lastUpdate?: LastUpdateType;
+  dataCommodity: IBasicCommodity[];
 
   setLastUpdate: React.Dispatch<SetStateAction<string | undefined>>;
   setDataCommodity: React.Dispatch<SetStateAction<IBasicCommodity[]>>;

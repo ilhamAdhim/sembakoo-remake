@@ -8,20 +8,21 @@ import { DataContext, DataContextType } from "context/DataContext";
 
 import { IBasicCommodity } from "types/commodity";
 
-import Navbar from "components/Navbar";
+import Navbar from "components/Layout/Navbar";
 import Jumbotron from "components/Jumbotron";
 import CommodityList from "components/CommodityList";
+import SearchCommodityRegion from "components/SearchCommodityRegion";
+import Footer from "components/Layout/Footer";
 
 const { ToastContainer } = createStandaloneToast();
 
 const App = () => {
   const { setLastUpdate } = useContext(DataContext) as DataContextType;
+
   const [responseAPI, setResponseAPI] = useState<IResponseAPI>();
   const [highestCommodities, setHighestCommodities] =
     useState<IBasicCommodity[]>();
   const [isDataLoaded, setIsDataLoaded] = useState(false);
-
-  const [isSearching, setIIsSearching] = useState(false);
 
   const fetchData = useCallback(async () => {
     try {
@@ -74,8 +75,12 @@ const App = () => {
           isDataLoaded={isDataLoaded}
           commodities={highestCommodities}
         />
+        <SearchCommodityRegion
+          rawData={responseAPI?.national_commodity_price}
+        />
         <ToastContainer />
       </Container>
+      <Footer />
     </>
   );
 };

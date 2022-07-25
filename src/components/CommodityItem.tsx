@@ -35,7 +35,7 @@ const CommodityItem = (props: IBasicCommodity) => {
               .replace(" ", "-")}.png?raw=true`}
           />
         </Box>
-        <Flex flexDir="column" m="auto">
+        <Flex textAlign={["center", "start"]} flexDir="column" m="auto">
           <Text fontWeight="bold"> {commodity} </Text>
           <Text> {price} </Text>
           <Text> {region} </Text>
